@@ -4,40 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/globalStyles.css">
+    <link rel="stylesheet" href="./styles/login.css">
+    <link rel="stylesheet" href="./styles/loginAndInput.css">
+    <link rel="stylesheet" href="./styles/buttons.css">
     <title>Petinfo - Login</title>
 </head>
 <body>
     <main>
-        <section id="information-page">
+        <section class="information-pets-login" id="information-page">
             <h1>Petinfo</h1>
-            <h2><span class="title-span">Amor</span> e <span>Carinho</span> por meio do conhecimento</h2>
-            <span>Todas as informações para melhorar a vida do seu pet em um só lugar</span>
-            <img src="./assets/img/img-login.svg" alt="pets">
+            <h2 class="legenda"><span class="title-span">Amor</span> e <span class="title-span">Carinho</span> por meio do conhecimento</h2>
+            <span class="sub-legenda">Todas as informações para melhorar a vida do seu pet em um só lugar</span>
+            <img class="login-img" src="./assets/img/img-login.svg" alt="pets">
         </section>
 
-        <section id="login">
+        <section class="section-login" id="login">
             <h2>Login</h2>
 
-            <div>
-                <label for="usuario">Usuário</label>
-                <input type="text" name="usuario" id="user-login" required placeholder="Digite seu usuário aqui">
-            </div>
+            <form>
+                <div class="div-input-user">
+                    <label for="usuario">Usuário</label>
+                    <input type="text" name="usuario" id="user-login" required placeholder="Digite seu usuário aqui">
+                </div>
+    
+                <div class="div-input-user">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="password" id="password-login" required placeholder="Digite sua senha aqui">
+                    <span class="message-error hidden" id="password-error">A senha está incorreta</span>
+                </div>
+    
+                <div class="div-btn-acess">
+                    <button class="btn-acess" type="submit">Acessar</button>
+                </div>
+            </form>
 
-            <div>
-                <label for="senha">Senha</label>
-                <input type="password" name="password" id="password-login" required placeholder="Digite sua senha aqui">
-                <span id="password-error">A senha está incorreta</span>
-            </div>
-
-            <div>
-                <button type="submit">Acessar</button>
-            </div>
-
-            <div>
+            <div class="information-page-register">
                 <p>Ainda não possui conta?</p>
                 <span>Clicando no botão abaixo, você pode se cadastrar rapidamente</span>
 
-                <button><a href="./pages/register/register.html">Cadastrar</a></button>
+                <button class="btn-register"><a class="replace-register" href="./pages/register/register.html">Cadastrar</a></button>
             </div>
         </section>
     </main>

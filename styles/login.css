@@ -1,0 +1,43 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    font-family: "IBM Plex Sans";
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.information-pets-login{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 2.5rem;
+    gap: 1.5rem;
+    padding-right: 2rem;
+    width: 24.438rem;
+    height: 29.563rem;
+    color: var(--gray100);
+}
+
+.legenda {
+    font-size: var(--font-title-1);
+}
+
+.title-span {
+    color: var(--brand100);
+}
+
+.sub-legenda {
+    font-size: var(--font-text-1);
+    color: var(--gray300);
+}
+
+.login-img {
+    width: 18.563rem;
+    height: 13.063rem;
+}
