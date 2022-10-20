@@ -40,3 +40,53 @@
         </div>
     </div>
 </section> */}
+
+{/* <div class="div-modal-create-post">
+    <div class="div-btn-profile-exit">
+        <h3>Criando novo post</h3>
+        <button class="btn-exit-modal">X</button>
+    </div>
+
+    <form id="form-publi-post">
+        <div class="div-title-post">
+            <label for="titulo-do-post">Título do post</label>
+            <input type="text" name="titulo" id="titulo-post" required placeholder="Digite o título aqui...">
+        </div>
+
+        <div class="div-text-post">
+            <label for="texto-digitado">Conteúdo do post</label>
+            <textarea name="texto-digitado" id="text-from-user" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="buttons-publi-post">
+            <button class="btn-cancel-delete">Cancelar</button>
+            <button class="btn-publi-posts-modal" id="publi-post" type="submit">Publicar</button>
+        </div>
+    </form>
+</div> */}
+
+{/* <section class="modal-wrapper">
+    <div class="div-modal-create-post">
+        <div class="div-btn-profile-exit">
+            <h3>Edição</h3>
+            <button class="btn-exit-modal">X</button>
+        </div>
+
+        <form id="form-publi-post">
+            <div class="div-title-post">
+                <label for="titulo-do-post">Título do post</label>
+                <input type="text" name="titulo" id="titulo-post" required placeholder="Digite o título aqui...">
+            </div>
+
+            <div class="div-text-post">
+                <label for="texto-digitado">Conteúdo do post</label>
+                <textarea name="texto-digitado" id="text-from-user" cols="30" rows="10"></textarea>
+            </div>
+
+            <div class="buttons-publi-post">
+                <button class="btn-cancel-delete">Cancelar</button>
+                <button class="btn-publi-posts-modal" id="btn-save-newpost" type="submit">Salvar Alterações</button>
+            </div>
+        </form>
+    </div>
+</section> */}

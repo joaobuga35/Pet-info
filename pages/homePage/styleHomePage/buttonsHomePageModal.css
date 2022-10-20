@@ -116,3 +116,43 @@
     background-color: var(--alert200);
     border: 1px solid var(--alert200);
 }
+
+.btn-publi-posts-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "IBM Plex Sans";
+    font-size: var(--font-text-2);
+    font-weight: var(--font-weight-2);
+    width: 6.75rem;
+    height: 2.375rem;
+    background-color: var(--brand100);
+    color: var(--gray900);
+    border: none;
+    border-radius: var(--radius-2);
+    cursor: pointer;
+}
+
+.btn-publi-posts-modal:hover {
+    background-color: var(--brand200);
+}
+
+#btn-save-newpost{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "IBM Plex Sans";
+    font-size: var(--font-text-2);
+    font-weight: var(--font-weight-2);
+    width: 7.75rem;
+    height: 2.375rem;
+    background-color: var(--brand100);
+    color: var(--gray900);
+    border: none;
+    border-radius: var(--radius-2);
+    cursor: pointer;
+}
+
+#btn-save-newpost:hover {
+    background-color: var(--brand200);
+}

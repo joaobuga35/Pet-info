@@ -44,6 +44,12 @@ main {
     gap: 0.5rem;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 label {
     font-size: var(--font-text-2);
     font-weight: var(--font-weight-2);
@@ -65,6 +71,7 @@ input:focus {
 }
 
 .div-btns-register {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
