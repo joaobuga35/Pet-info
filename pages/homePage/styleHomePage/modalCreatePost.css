@@ -1,0 +1,7 @@
+.div-modal-create-post {
+    width: 800px;
+    height: 470px;
+    background-color: var(--gray900);
+    padding: 32px;
+    border-radius: var(--radius-1);
+}

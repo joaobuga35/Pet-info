@@ -1,0 +1,49 @@
+.modal-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    background-color: var(--color-grey-1-opacity-5);
+}
+
+.div-modal {
+    width: 800px;
+    height: 570px;
+    background-color: var(--gray900);
+    padding: 32px;
+    border-radius: var(--radius-1);
+}
+
+.div-btn-profile-exit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.btn-exit-modal {
+    width: 38px;
+    height: 32px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-text-2);
+    color: var(--gray400);
+    cursor: pointer;
+}
+
+.div-modal h2 {
+    margin-bottom: 1.5rem;
+    font-size: var(--font-title-2);
+    line-height: var(--line-height-1);
+}
+
+.div-modal p {
+    line-height: var(--line-height-1);
+    font-size: var(--font-text-1);
+    color: var(--gray300);
+}

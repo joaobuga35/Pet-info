@@ -1,0 +1,32 @@
+.div-delete-post {
+    width: 800px;
+    height: 302px;
+    background-color: var(--gray900);
+    border-radius: var(--radius-1);
+    padding: 2rem;
+}
+
+.div-btn-profile-exit h3 {
+    font-size: var(--font-title-3);
+}
+
+.description-delete {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2.625rem;
+}
+
+.description-delete h2 {
+    font-size: var(--font-title-2);
+}
+
+.description-delete p {
+    font-size: var(--font-text-1);
+    color: var(--gray300);
+}
+
+.div-btn-cancel-delete {
+    display: flex;
+    gap: 1rem;
+}

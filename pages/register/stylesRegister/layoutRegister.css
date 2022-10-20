@@ -1,12 +1,11 @@
 .layout-register {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-self: flex-start;
     margin-right: 2.5rem;
     gap: 1.5rem;
-    padding-right: 2rem;
     width: 24.438rem;
-    height: 29.563rem;
+    height: 25.563rem;
     color: var(--gray100);
 }
 

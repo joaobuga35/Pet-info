@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/globalStyles.css">
     <link rel="stylesheet" href="/styles/buttons.css">
-    <link rel="stylesheet" href="/styles/register.css">
-    <link rel="stylesheet" href="/styles/layoutRegister.css">
-    <link rel="stylesheet" href="/styles/toastRegister.css">
+    <link rel="stylesheet" href="./stylesRegister/register.css">
+    <link rel="stylesheet" href="./stylesRegister/layoutRegister.css">
+    <link rel="stylesheet" href="./stylesRegister/toastRegister.css">
     <title>Petinfo-registro</title>
 </head>
 <body>
@@ -18,31 +18,33 @@
                 <h2>Cadastro</h2>
                 <button class="btn-return-login"><a class="btn-ancor-register" href="/index.html">Voltar para o login</a></button>
             </div>
-
-            <div class="div-input-register">
-                <label for="usuario">Usuário</label>
-                <input type="text" name="usuario" id="user-register" required placeholder="Digite seu usuário aqui">
-            </div>
-
-            <div class="div-input-register">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email-register" required placeholder="Digite seu email aqui">
-            </div>
-
-            <div class="div-input-register">
-                <label for="img-profile">Link da foto do perfil</label>
-                <input type="text" name="img-link-profile" id="img-register" required placeholder="Insira o link aqui">
-            </div>
-
-            <div class="div-input-register">
-                <label for="password">Senha</label>
-                <input type="password" name="password" id="password-register" required placeholder="Digite sua senha aqui">
-            </div>
-
-            <div class="div-btns-register">
-                <button class="btn-acess" id="register-datas">Cadastrar</button>
-                <button class="btn-register"><a class="replace-register" href="/index.html">Voltar para o login</a></button>
-            </div>
+            
+            <form>
+                <div class="div-input-register">
+                    <label for="usuario">Usuário</label>
+                    <input type="text" name="usuario" id="user-register" required placeholder="Digite seu usuário aqui">
+                </div>
+    
+                <div class="div-input-register">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email-register" required placeholder="Digite seu email aqui">
+                </div>
+    
+                <div class="div-input-register">
+                    <label for="img-profile">Link da foto do perfil</label>
+                    <input type="text" name="img-link-profile" id="img-register" required placeholder="Insira o link aqui">
+                </div>
+    
+                <div class="div-input-register">
+                    <label for="password">Senha</label>
+                    <input type="password" name="password" id="password-register" required placeholder="Digite sua senha aqui">
+                </div>
+    
+                <div class="div-btns-register">
+                    <button class="btn-acess" id="register-datas">Cadastrar</button>
+                    <button class="btn-register"><a class="replace-register" href="/index.html">Voltar para o login</a></button>
+                </div>
+            </form>
         </section>
 
         <section class="layout-register" id="description-register">
@@ -52,15 +54,15 @@
             <img class="register-img-pets" src="/assets/img/img-register.svg" alt="pets">
         </section>
     </main>
-<!--     
+    
     <div class="container-toast">
-        <div>
+        <div class="titile-toast">
             <img src="/assets/img/check.svg" alt="check">
             <h2>Sua conta foi criada com sucesso!</h2>
         </div>
 
-        <p>Agora você pode acessar os conteúdos utilizando seu usuário e senha na página de login:<a href="/index.html">Acessar página de login</a></p>
-    </div> -->
+        <p>Agora você pode acessar os conteúdos utilizando seu usuário e senha na página de login: <a href="/index.html">Acessar página de login</a></p>
+    </div>
     <script src=""></script>
 </body>
 </html>

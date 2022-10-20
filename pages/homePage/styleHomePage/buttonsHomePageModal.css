@@ -75,3 +75,44 @@
 .btn-acess-post:hover {
     text-decoration: underline var(--brand100);
 }
+
+.btn-cancel-delete {
+    font-family: "IBM Plex Sans";
+    font-size: var(--font-text-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gray400);
+    background-color: var(--gray700);
+    width: 3.438rem;
+    height: 2.375rem;
+    border: 1px solid var(--gray600);
+    border-radius: var(--radius-2);
+    font-weight: var(--font-weight-1);
+    cursor: pointer;
+}
+
+.btn-cancel-delete:hover {
+    color: var(--gray100);
+    background-color: var(--gray800);
+}
+
+.btn-delete-post {
+    width: 11.813rem;
+    height: 2.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--alert100);
+    border: 1px solid var(--alert100);
+    border-radius: var(--radius-2);
+    font-family: "IBM Plex Sans";
+    font-size: var(--font-text-1);
+    color: var(--gray900);
+    cursor: pointer;
+}
+
+.btn-delete-post:hover {
+    background-color: var(--alert200);
+    border: 1px solid var(--alert200);
+}

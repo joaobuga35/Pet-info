@@ -21,6 +21,8 @@
   --alert100: hsl(349, 57%, 50%);
   --alert200: hsl(349, 69%, 55%);
   --sucess100: hsl(162, 88%, 26%);
+  --color-grey-1-opacity-5: rgba(0, 0, 0, 0.5);
+
 
   --font-title-1: 2rem;
   --font-title-2: 1.5rem;
@@ -33,6 +35,8 @@
   --font-weight-1: 600;
   --font-weight-2: 500;
   --font-weight-3: 400;
+
+  --line-height-1:150%;
 
   --radius-1 : 0.5rem;
   --radius-2: 0.25rem;
