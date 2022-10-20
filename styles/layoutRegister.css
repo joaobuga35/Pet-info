@@ -1,0 +1,29 @@
+.layout-register {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 2.5rem;
+    gap: 1.5rem;
+    padding-right: 2rem;
+    width: 24.438rem;
+    height: 29.563rem;
+    color: var(--gray100);
+}
+
+.layout-register h1 {
+    font-size: var(--font-title-1);
+}
+
+.title-span-register {
+    color: var(--brand100);
+}
+
+.description-span-register {
+    font-size: var(--font-text-1);
+    color: var(--gray300);
+}
+
+.register-img-pets {
+    width: 18.75rem;
+    height: 12.688rem;
+}

@@ -1,0 +1,77 @@
+.create-post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "IBM Plex Sans";
+    font-size: var(--font-text-2);
+    font-weight: var(--font-weight-2);
+    width: 9.5rem;
+    height: 2.375rem;
+    background-color: var(--brand100);
+    color: var(--gray900);
+    border: none;
+    border-radius: var(--radius-2);
+    cursor: pointer;
+}
+
+.create-post:hover{
+    background-color: var(--brand200);
+}
+
+.btn-edit {
+    font-family: "IBM Plex Sans";
+    font-size: var(--font-text-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gray100);
+    background-color: var(--gray600);
+    width: 3.438rem;
+    height: 2rem;
+    border: 1px solid var(--gray600);
+    border-radius: var(--radius-2);
+    font-weight: var(--font-weight-1);
+    cursor: pointer;
+}
+
+.btn-edit:hover {
+    color: var(--gray300);
+    background-color: var(--gray600);
+}
+
+.btn-delete {
+    font-family: "IBM Plex Sans";
+    font-size: var(--font-text-3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gray400);
+    background-color: var(--gray700);
+    width: 3.438rem;
+    height: 2rem;
+    border: 1px solid var(--gray600);
+    border-radius: var(--radius-2);
+    font-weight: var(--font-weight-1);
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    color: var(--gray100);
+    background-color: var(--gray800);
+}
+
+.btn-acess-post {
+    font-family: "IBM Plex Sans";
+    font-size: var(--font-text-1);
+    font-weight: var(--font-weight-2);
+    border: none;
+    background-color: #fff;
+    color: var(--brand100);
+    width: 8.875rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
+.btn-acess-post:hover {
+    text-decoration: underline var(--brand100);
+}

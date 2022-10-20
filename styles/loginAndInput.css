@@ -8,7 +8,7 @@
     flex-direction: column;
     width: 23rem;
     height: 32.5rem;
-    padding: 24px 24px;;
+    padding: 24px 24px;
     border: 1px solid var(--gray600);
     border-radius: var(--radius-2);
     color: var(--gray100);
@@ -40,6 +40,10 @@ input {
     color: var(--gray100);
     outline: none;
     padding: 1rem;
+}
+
+input:focus {
+    border: 1px solid var(--gray100);
 }
 
 .input-password-error {

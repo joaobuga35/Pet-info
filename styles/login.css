@@ -29,6 +29,8 @@ main {
 }
 
 .title-span {
+    font-size: var(--font-title-1);
+    font-weight: var(--font-weight-1);
     color: var(--brand100);
 }
 

@@ -1,0 +1,56 @@
+.list-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.563rem;
+    margin-bottom: 4rem;
+}
+
+.div-information-profile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.profile-datas {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.img-post {
+    width: 32px;
+    height: 32px;
+    border-radius: 100%;
+}
+
+.name-profile {
+    font-size: var(--font-text-2);
+    font-weight: var(--font-weight-2);
+    color: var(--gray100);
+}
+
+.date-profile {
+    font-size: var(--font-text-2);
+    font-weight: var(--font-weight-2);
+    color: var(--gray400);
+}
+
+.div-btns-edit-delete {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.content-post {
+    display: flex;
+    flex-direction: column;
+    gap: 1.563rem;
+}
+
+.content-post h3 {
+    font-size: var(--font-title-2);
+}
+
+.content-post p {
+    color: var(--gray300);
+    font-size: var(--font-text-1);
+}

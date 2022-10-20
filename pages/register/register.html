@@ -6,47 +6,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/globalStyles.css">
     <link rel="stylesheet" href="/styles/buttons.css">
+    <link rel="stylesheet" href="/styles/register.css">
+    <link rel="stylesheet" href="/styles/layoutRegister.css">
     <title>Petinfo-registro</title>
 </head>
 <body>
     <main>
         <section class="register-section" id="form-register">
-            <div>
+            <div class="div-user-register">
                 <h2>Cadastro</h2>
-                <button><a href="/index.html">Voltar para o login</a></button>
+                <button class="btn-return-login"><a class="btn-ancor-register" href="/index.html">Voltar para o login</a></button>
             </div>
 
-            <div>
+            <div class="div-input-register">
                 <label for="usuario">Usuário</label>
                 <input type="text" name="usuario" id="user-register" required placeholder="Digite seu usuário aqui">
             </div>
 
-            <div>
+            <div class="div-input-register">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email-register" required placeholder="Digite seu email aqui">
             </div>
 
-            <div>
+            <div class="div-input-register">
                 <label for="img-profile">Link da foto do perfil</label>
                 <input type="text" name="img-link-profile" id="img-register" required placeholder="Insira o link aqui">
             </div>
 
-            <div>
+            <div class="div-input-register">
                 <label for="password">Senha</label>
                 <input type="password" name="password" id="password-register" required placeholder="Digite sua senha aqui">
             </div>
 
-            <div>
-                <button id="register-datas">Cadastrar</button>
-                <button><a href="/index.html">Voltar para o login</a></button>
+            <div class="div-btns-register">
+                <button class="btn-acess" id="register-datas">Cadastrar</button>
+                <button class="btn-register"><a class="replace-register" href="/index.html">Voltar para o login</a></button>
             </div>
         </section>
 
         <section class="layout-register" id="description-register">
             <h1>Petinfo</h1>
-            <h2><span class="title-span">Ooooooba!</span></h2>
-            <span>Agora vamos poder contribuir para o bem estar do seu pet por meio do conhecimento</span>
-            <img src="/assets/img/img-register.svg" alt="pets">
+            <h2><span class="title-span-register">Ooooooba!</span></h2>
+            <span class="description-span-register">Agora vamos poder contribuir para o bem estar do seu pet por meio do conhecimento</span>
+            <img class="register-img-pets" src="/assets/img/img-register.svg" alt="pets">
         </section>
     </main>
     <script src=""></script>
