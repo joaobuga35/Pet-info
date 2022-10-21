@@ -1,3 +1,5 @@
+import { renderToast } from "./toasts.js";
+
 const baseUrl = "http://localhost:3333"
 
 async function register(body){
@@ -9,6 +11,7 @@ async function register(body){
         },
         body: JSON.stringify(body),
       });
+      
     } catch (err) {
 
     }
@@ -23,7 +26,20 @@ async function login(body) {
         },
         body: JSON.stringify(body),
       });
-      console.log("oi")
+      const btnLogin = document.querySelector('#btn-direct-home')
+      btnLogin.innerHTML = '<img src = "./assets/img/spinner.svg" class="img-spinner">'
+
+      if (request.status == 200) {
+        setTimeout(() => {
+          window.location.replace("./pages/homePage/homePage.html")
+        },3700)
+
+      } else {
+        setTimeout(() => {
+          btnLogin.innerText = "Acessar"
+        },3700)
+      }
+
     } catch (err) {
         console.log(err)
     }

@@ -31,18 +31,18 @@
     color: var(--brand100);
 }
 
-.titile-toast {
+.title-toast {
     display: flex;
     align-items: center;
     gap: 0.85rem;
 }
 
-.titile-toast img {
+.title-toast img {
     width: 24px;
     height: 24px;
 }
 
-.titile-toast h2 {
+.title-toast h2 {
     font-size: var(--font-text-1);
     color: var(--sucess100);
 }
