@@ -66,6 +66,10 @@
     color: var(--gray400);
 }
 
+.opacity {
+    opacity: 60%;
+}
+
 .img-spinner {
     animation: loading 1.5s infinite;
 }

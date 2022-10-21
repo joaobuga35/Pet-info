@@ -81,3 +81,12 @@ input:focus {
     width: 20rem;
     height: 25.938rem;
 }
+
+.message-user-error {
+    font-size: var(--font-text-2);
+    color: var(--alert100);
+}
+
+.hide {
+    display: none;
+}

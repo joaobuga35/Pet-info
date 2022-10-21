@@ -1,5 +1,18 @@
 import { login } from "./request.js";
 
+const btnLogar = document.querySelector('#btn-direct-home')
+const inputsLogin = [...document.querySelectorAll('input')]
+
+inputsLogin.forEach(inputs => {
+    inputs.addEventListener('keyup',() => {
+        if (inputs.value != "") {
+            btnLogar.classList.remove('opacity')
+        } else {
+            btnLogar.classList.add('opacity')
+        }
+    })
+})
+
 const datasLogin = () => {
     const formLogin = document.querySelector('#form-login')
     const elements = [...formLogin.elements]

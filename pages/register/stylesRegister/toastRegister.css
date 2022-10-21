@@ -11,7 +11,7 @@
     background-color: var(--grey900);
     box-shadow: rgb(0 0 0 / 10%) 0px 4px 30px -12px;
     border-radius: var(--radius-2);
-    animation: toastIt 8000ms ease-in forwards;
+    animation: toastIt 4000ms ease-in forwards;
 }
 
 @keyframes toastIt {
