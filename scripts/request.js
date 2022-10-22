@@ -1,4 +1,5 @@
 import { renderToast } from "./toasts.js";
+// import { getlocalStorage} from "./getlocalStorage.js";
 
 const baseUrl = "http://localhost:3333"
 
@@ -41,7 +42,10 @@ async function login(body) {
       const btnLogin = document.querySelector('#btn-direct-home')
       btnLogin.innerHTML = '<img src = "./assets/img/spinner.svg" class="img-spinner">'
 
-      if (request.status == 200) {
+      if (request.ok) {
+        const response = await request.json()
+        localStorage.setItem("user",JSON.stringify(response))
+
         setTimeout(() => {
           window.location.replace("./pages/homePage/homePage.html")
         },3700)
@@ -62,17 +66,6 @@ async function login(body) {
     }
 }
 
-function cleanError() {
-  const spanMessageNotFound = document.querySelector('#password-error')
-  const inputPassword = document.querySelector('#password')
-
-  inputPassword.addEventListener("keyup",() => {
-    spanMessageNotFound.classList.add("hidden")
-    inputPassword.classList.remove("input-password-error")
-  })
-}
-
-cleanError()
 
 
 export {register, login};

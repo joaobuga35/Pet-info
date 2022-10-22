@@ -33,4 +33,16 @@ const datasLogin = () => {
     })
 }
 
+function cleanError() {
+    const spanMessageNotFound = document.querySelector('#password-error')
+    const inputPassword = document.querySelector('#password')
+  
+    inputPassword.addEventListener("keyup",() => {
+      spanMessageNotFound.classList.add("hidden")
+      inputPassword.classList.remove("input-password-error")
+    })
+  }
+  
+cleanError()
+
 datasLogin()

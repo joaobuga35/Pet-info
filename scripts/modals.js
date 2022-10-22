@@ -1,3 +1,63 @@
+
+
+function createPostModal (){
+    const body = document.querySelector('body')
+    const section = document.createElement('section')
+    section.classList = ('modal-wrapper')
+
+    section.insertAdjacentHTML('beforeend', `
+    <div class="div-modal-create-post">
+    <div class="div-btn-profile-exit">
+        <h3>Criando novo post</h3>
+        <button id="btn-close-modal" class="btn-exit-modal">X</button>
+    </div>
+
+    <form id="form-publi-post">
+        <div class="div-title-post">
+            <label for="titulo-do-post">Título do post</label>
+            <input type="text" name="titulo" id="titulo-post" required placeholder="Digite o título aqui...">
+        </div>
+
+        <div class="div-text-post">
+            <label for="texto-digitado">Conteúdo do post</label>
+            <textarea name="texto-digitado" id="text-from-user" cols="30" rows="10"></textarea>
+        </div>
+
+        <div class="buttons-publi-post">
+            <button id="cancel-modal" class="btn-cancel-delete">Cancelar</button>
+            <button class="btn-publi-posts-modal" id="publi-post" type="submit">Publicar</button>
+        </div>
+    </form>
+</div>`)
+    body.appendChild(section)
+    return body
+}
+
+function closeModalCreatePost(){
+    const btnCloseModal = document.querySelector('#btn-close-modal')
+    const btnCancelModal = document.querySelector('#cancel-modal')
+    const sectionModal =  document.querySelector('.modal-wrapper')
+
+    btnCloseModal.addEventListener('click', () =>{
+        sectionModal.remove()
+    })
+
+    btnCancelModal.addEventListener('click', () =>{
+        sectionModal.remove()
+    })
+}
+
+export{createPostModal,closeModalCreatePost}
+
+
+
+
+
+
+
+
+
+
 // <!-- <section class="modal-wrapper" id="modal-open-post">
 // <div class="div-modal">
 //     <div class="div-btn-profile-exit">
