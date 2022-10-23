@@ -1,4 +1,5 @@
-
+import { renderLi } from "./homePage.js"
+import {findPost,createPost} from "../scripts/requestHome.js"
 
 function createPostModal (){
     const body = document.querySelector('body')
@@ -15,12 +16,12 @@ function createPostModal (){
     <form id="form-publi-post">
         <div class="div-title-post">
             <label for="titulo-do-post">Título do post</label>
-            <input type="text" name="titulo" id="titulo-post" required placeholder="Digite o título aqui...">
+            <input type="text" name="titulo" id="title" required placeholder="Digite o título aqui...">
         </div>
 
         <div class="div-text-post">
             <label for="texto-digitado">Conteúdo do post</label>
-            <textarea name="texto-digitado" id="text-from-user" cols="30" rows="10"></textarea>
+            <textarea name="texto-digitado" id="content" cols="30" rows="10"></textarea>
         </div>
 
         <div class="buttons-publi-post">
@@ -45,18 +46,39 @@ function closeModalCreatePost(){
     btnCancelModal.addEventListener('click', () =>{
         sectionModal.remove()
     })
+    const token = localStorage.getItem('user')
+    const form = document.querySelector('#form-publi-post')
+    console.log(form)
+    const elements = [...form.elements]
+
+    // console.log(elements)
+
+    form.addEventListener('submit',async event => {
+
+        event.preventDefault()
+
+        const body = {}
+
+        elements.forEach((elem) => {
+            if (elem.tagName !== "BUTTON" && elem.value !== "") {
+                body[elem.id] = elem.value
+            }
+        })
+        await createPost(token,body)
+        const procuraPost = await findPost(token) 
+        const ul = document.querySelector('#user-posts')
+        ul.innerHTML = ""
+        renderLi(procuraPost)
+        form.reset()
+        sectionModal.remove()
+    })
 }
 
+// function updateSite(){
+
+// }
+
 export{createPostModal,closeModalCreatePost}
-
-
-
-
-
-
-
-
-
 
 // <!-- <section class="modal-wrapper" id="modal-open-post">
 // <div class="div-modal">
