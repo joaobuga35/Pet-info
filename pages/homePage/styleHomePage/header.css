@@ -24,4 +24,6 @@ main {
 .img-profile {
     width: 41px;
     height: 41px;
+    object-fit: contain;
+    border-radius: 100%
 }

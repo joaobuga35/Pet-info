@@ -1,5 +1,5 @@
-import { createPostModal,closeModalCreatePost } from "./modals.js";
-import {findPost,createPost} from "./requestHome.js"
+import { createPostModal,closeModalCreatePost,modalExcludes,modalAcessPost } from "./modals.js";
+import {findPost,createPost,findUser} from "./requestHome.js"
 
 function openModalCreationPost (){
     const btnOpenModalAboutCreatePost = document.querySelector('#modal-create-post')
@@ -10,26 +10,46 @@ function openModalCreationPost (){
         closeModalCreatePost()
     })
 }
-
 openModalCreationPost()
 
-async function test () {
+async function renderAllPosts () {
     const token = localStorage.getItem('user')
     console.log(token)
     
     const callPost = await findPost(token)
-    console.log(callPost)
+    const ul = document.querySelector('#user-posts')
+    ul.innerHTML = ""
+    renderLi(callPost)
 }
+renderAllPosts()
 
+async function headerProfile(){
+    const token = localStorage.getItem('user')
 
+    const callProfile = await findUser(token)
+    renderProfile(callProfile)
+}
+headerProfile()
 
-test()
+function renderProfile (user) {
+    const divHeader = document.querySelector('.div-header')
+
+    const img = document.createElement('img')
+
+    img.classList = 'img-profile'
+    img.src = user.avatar
+    img.alt = 'Foto do usuário'
+
+    divHeader.append(img)
+    return divHeader
+}
 
 function renderLi(arr) {
     const ul = document.querySelector('#user-posts')
      ul.innerHTML = ""
     arr.forEach((elem) => {
         const li = document.createElement('li')
+        li.id = elem.id
 
         const divProfile = document.createElement('div')
         const divProfileDatas= document.createElement('div')
@@ -59,7 +79,7 @@ function renderLi(arr) {
 
         imgProfilePost.src = elem.user.avatar
         spanName.innerText = elem.user.username
-        spanData.innerText = '| Outubro 2022'
+        spanData.innerText = new Date()
 
         buttonEdit.innerText = 'Editar'
         buttonEdit.id = 'edit-post'
@@ -69,7 +89,13 @@ function renderLi(arr) {
         h3.innerText = elem.title
         p.innerText = elem.content
         buttonAcessPost.classList = 'btn-acess-post'
+        buttonAcessPost.innerText = 'Acessar publicação'
         buttonAcessPost.id = 'btn-open-post'
+
+        buttonAcessPost.addEventListener('click',(e)=> {
+            e.preventDefault()
+            modalAcessPost()
+        })
 
         divProfileDatas.append(imgProfilePost,spanName,spanData)
         divButtons.append(buttonEdit,buttonDelete)
@@ -83,23 +109,3 @@ function renderLi(arr) {
 }
 
 export{renderLi}
-
-{/* <li class="list-items">
-                    <div class="div-information-profile">
-                        <div class="profile-datas">
-                            <img class="img-post" src="/assets/img/Ellipse 1.svg" alt="">
-                            <span class="name-profile">Samuel Leão</span>
-                            <span class="date-profile">| Outubro 2022</span>
-                        </div>
-
-                        <div class="div-btns-edit-delete">
-                            <button class="btn-edit" id="edit-post">Editar</button>
-                            <button class="btn-delete" id="delete-post">Excluir</button>
-                        </div>
-                    </div>
-
-                    <div class="content-post">
-                        <h3>Outubro Rosa: Detalhes sobre a importância da prevenção do câncer de mama em cadelas e gatas</h3>
-                        <p>Assim como em humanos, cadelas e gatas também podem desenvolver câncer de mama. Ainda hoje, para ambas as espécies, o câncer de mama tem maior...</p>
-                        <button class="btn-acess-post" id="btn-open-post">Acessar publicação</button>
-                    </div> */}

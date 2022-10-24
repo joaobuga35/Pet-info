@@ -33,4 +33,56 @@ async function createPost(token,body) {
     }
 }
 
-export {findPost,createPost}
+async function findUser (token) {
+    try {
+        const response = await fetch('http://localhost:3333/users/profile',{
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        })
+        if (response.ok) {
+            return response.json()
+        }
+    } catch(err){
+        console.log(err)
+    }
+}
+
+async function updatePost (body,token,idUser) {
+    try {
+        const request = await fetch('http://localhost:3333/posts/' + idUser,{
+            method: "PATCH",
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify(body)
+        })
+        if (request.ok) {
+            return response.json()
+        }
+    } catch(err) {
+        console.log(err)
+    }
+}
+
+async function deletePost (token,idUser) {
+    try {
+        const request = await fetch('http://localhost:3333/posts/' + idUser,{
+            method: "DELETE",
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${token}`
+            },
+        })
+        if (request.ok) {
+            return request.json()
+        }
+    } catch(err) {
+        console.log(err)
+    }
+}
+
+export {findPost,createPost,findUser,updatePost,deletePost}

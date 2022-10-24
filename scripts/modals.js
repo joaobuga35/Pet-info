@@ -74,11 +74,104 @@ function closeModalCreatePost(){
     })
 }
 
-// function updateSite(){
+function modalExcludes(){
+    const body = document.querySelector('body')
+    const section = document.createElement('section')
+    section.classList = ('modal-wrapper')
 
-// }
+    const divDelete = document.createElement('div')
 
-export{createPostModal,closeModalCreatePost}
+    const divButtonExit = document.createElement('div')
+    const h3 = document.createElement('h3')
+    const buttonExitModal = document.createElement('button')
+
+    const divDescription = document.createElement('div')
+    const h2 = document.createElement('h2')
+    const p = document.createElement('p')
+
+    const divButtonCancel = document.createElement('div')
+    const buttonCancel = document.createElement('button')
+    const buttonDelete = document.createElement('button')
+
+    divDelete.classList.add('div-delete-post')
+
+    divButtonExit.classList.add('div-btn-profile-exit')
+    h3.innerText = 'Confirmação de exclusão'
+    buttonExitModal.innerText = 'X'
+    buttonExitModal.classList = 'btn-exit-modal'
+
+    divDescription.classList = 'description-delete'
+    h2.innerText = 'Tem certeza que deseja excluir este post?'
+    p.innerText = 'Essa ação não poderá ser desfeita, então pedimos que tenha cautela antes de concluir'
+
+    divButtonCancel.classList = 'div-btn-cancel-delete'
+    buttonCancel.classList = 'btn-cancel-delete'
+    buttonCancel.id = 'cancel-delete'
+    buttonCancel.innerText = 'Cancelar'
+    buttonDelete.classList =  'btn-delete-post'
+    buttonDelete.id = 'button-delete-post'
+    buttonDelete.innerText = 'Sim,excluir este post'
+
+    divButtonExit.append(h3,buttonExitModal)
+    divDescription.append(h2,p)
+    divButtonCancel.append(buttonCancel,buttonDelete)
+    divDelete.append(divButtonExit,divDescription,divButtonCancel)
+
+    section.append(divDelete)
+    body.append(section)
+}
+
+function modalAcessPost(){
+    const body = document.querySelector('body')
+    const section = document.createElement('section')
+    section.classList = ('modal-wrapper')
+
+    const divModal = document.createElement('div')
+
+    const divBtnProfileExit = document.createElement('div')
+
+    const divProfileDatas = document.createElement('div')
+    const img = document.createElement('img')
+    const spanName = document.createElement('span')
+    const spanData = document.createElement('span')
+    const divButtonExit = document.createElement('div')
+    const buttonExit = document.createElement('button')
+
+    const h2 = document.createElement('h2')
+    const p = document.createElement('p')
+
+    divModal.classList = 'div-modal'
+
+    divBtnProfileExit.classList = 'div-btn-profile-exit'
+    divProfileDatas.classList = 'profile-datas'
+    img.classList = 'img-post'
+    spanName.classList = 'name-profile'
+    spanData.classList = 'date-profile'
+    divButtonExit.classList = 'exit-modal'
+    buttonExit.classList = 'btn-exit-modal'
+
+    spanName.innerText = 'doido'
+    spanData.innerText = new Date()
+
+    buttonExit.innerText = 'X'
+    buttonExit.addEventListener('click', () => {
+        section.remove()
+    })
+
+    // h2.innerText = objeto.title
+    // p.innerText = objeto.content
+
+    divProfileDatas.append(img,spanName,spanData)
+    divButtonExit.append(buttonExit)
+
+    divBtnProfileExit.append(divProfileDatas,divButtonExit)
+    divModal.append(divBtnProfileExit,h2,p)
+
+    section.append(divModal)
+    body.append(section)
+}
+export{createPostModal,closeModalCreatePost,modalExcludes,modalAcessPost}
+
 
 // <!-- <section class="modal-wrapper" id="modal-open-post">
 // <div class="div-modal">
@@ -103,25 +196,6 @@ export{createPostModal,closeModalCreatePost}
 //     </p>
 // <div>                           
 // </section> -->
-
-{/* <section class="modal-wrapper">
-    <div class="div-delete-post">
-        <div class="div-btn-profile-exit">
-            <h3>Confirmação de exclusão</h3>
-            <button class="btn-exit-modal">X</button>
-        </div>
-
-        <div class="description-delete">
-            <h2>Tem certeza que deseja excluir este post?</h2>
-            <p>Essa ação não poderá ser desfeita, então pedimos que tenha cautela antes de concluir</p>
-        </div>
-
-        <div class="div-btn-cancel-delete">
-            <button id="cancel-delete" class="btn-cancel-delete">Cancelar</button>
-            <button id="button-delete-post" class="btn-delete-post ">Sim,excluir este post</button>
-        </div>
-    </div>
-</section> */}
 
 {/* <div class="div-modal-create-post">
     <div class="div-btn-profile-exit">
