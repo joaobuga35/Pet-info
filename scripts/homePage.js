@@ -79,7 +79,7 @@ function renderLi(arr) {
 
         imgProfilePost.src = elem.user.avatar
         spanName.innerText = elem.user.username
-        spanData.innerText = new Date()
+        spanData.innerText = '| Outubro 2022'
 
         buttonEdit.innerText = 'Editar'
         buttonEdit.id = 'edit-post'

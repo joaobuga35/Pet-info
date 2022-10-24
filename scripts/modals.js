@@ -151,7 +151,7 @@ function modalAcessPost(){
     buttonExit.classList = 'btn-exit-modal'
 
     spanName.innerText = 'doido'
-    spanData.innerText = new Date()
+    spanData.innerText = '| Outubro 2022'
 
     buttonExit.innerText = 'X'
     buttonExit.addEventListener('click', () => {
