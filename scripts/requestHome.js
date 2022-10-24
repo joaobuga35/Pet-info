@@ -1,3 +1,4 @@
+import {renderToast, renderToastExcludes} from "./toasts.js"
 async function findPost (token) {
     try {
         const response = await fetch('http://localhost:3333/posts',{
@@ -60,9 +61,8 @@ async function updatePost (body,token,idUser) {
             },
             body: JSON.stringify(body)
         })
-        if (request.ok) {
-            return response.json()
-        }
+        console.log(body)
+        return request.json()
     } catch(err) {
         console.log(err)
     }
@@ -77,9 +77,8 @@ async function deletePost (token,idUser) {
                 Authorization: `Bearer ${token}`
             },
         })
-        if (request.ok) {
-            return request.json()
-        }
+        renderToastExcludes()
+        return request.json()
     } catch(err) {
         console.log(err)
     }

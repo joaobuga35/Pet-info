@@ -1,5 +1,6 @@
-import { createPostModal,closeModalCreatePost,modalExcludes,modalAcessPost } from "./modals.js";
-import {findPost,createPost,findUser} from "./requestHome.js"
+import { createPostModal,closeModalCreatePost,modalExcludes,modalAcessPost,modalEditPost } from "./modals.js";
+import {findPost,createPost,findUser, deletePost} from "./requestHome.js"
+const token = localStorage.getItem('user')
 
 function openModalCreationPost (){
     const btnOpenModalAboutCreatePost = document.querySelector('#modal-create-post')
@@ -13,9 +14,6 @@ function openModalCreationPost (){
 openModalCreationPost()
 
 async function renderAllPosts () {
-    const token = localStorage.getItem('user')
-    console.log(token)
-    
     const callPost = await findPost(token)
     const ul = document.querySelector('#user-posts')
     ul.innerHTML = ""
@@ -24,7 +22,6 @@ async function renderAllPosts () {
 renderAllPosts()
 
 async function headerProfile(){
-    const token = localStorage.getItem('user')
 
     const callProfile = await findUser(token)
     renderProfile(callProfile)
@@ -66,7 +63,7 @@ function renderLi(arr) {
         const p = document.createElement('p')
         const buttonAcessPost = document.createElement('button')
 
-        li.classList = "list-items"
+        li.classList = "list-items animation"
         divProfile.classList = "div-information-profile"
         divProfileDatas.classList = "profile-datas"
         imgProfilePost.classList = "img-post"
@@ -83,8 +80,19 @@ function renderLi(arr) {
 
         buttonEdit.innerText = 'Editar'
         buttonEdit.id = 'edit-post'
+        buttonEdit.addEventListener('click', async (e) => {
+            e.preventDefault()
+            modalEditPost(elem)
+            renderAllPosts()
+        })
+
         buttonDelete.innerText = 'Excluir'
         buttonDelete.id = 'delete-post'
+        buttonDelete.addEventListener('click',async (e) => {
+            e.preventDefault()
+            modalExcludes(token,elem.id)
+            renderAllPosts()
+        })
 
         h3.innerText = elem.title
         p.innerText = elem.content
@@ -94,7 +102,7 @@ function renderLi(arr) {
 
         buttonAcessPost.addEventListener('click',(e)=> {
             e.preventDefault()
-            modalAcessPost()
+            bringPost(elem.id)
         })
 
         divProfileDatas.append(imgProfilePost,spanName,spanData)
@@ -108,4 +116,34 @@ function renderLi(arr) {
     return ul
 }
 
-export{renderLi}
+async function bringPost(id){
+    const callPost = await findPost(token)
+
+    const postFind = callPost.find(elem => {
+        if (elem.id == id) {
+            return elem
+        }
+    })
+    console.log(postFind)
+    modalAcessPost(postFind)
+}
+
+async function editPost(id){
+    const callPost = await findPost(token)
+
+    const postFind = callPost.find(elem => {
+        if (elem.id == id) {
+            return elem
+        }
+    })
+    console.log(postFind)
+    modalEditPost(postFind)
+}
+
+const buttonExitProfile = document.querySelector('#button-exit-count')
+buttonExitProfile.addEventListener('click', (e) => {
+    e.preventDefault()
+    localStorage.removeItem('user')
+    window.location.replace('../../index.html')
+})
+export{renderLi,renderAllPosts}

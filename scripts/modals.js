@@ -1,5 +1,6 @@
-import { renderLi } from "./homePage.js"
-import {findPost,createPost} from "../scripts/requestHome.js"
+import { renderLi,renderAllPosts } from "./homePage.js"
+import {findPost,createPost,deletePost,updatePost} from "../scripts/requestHome.js"
+const token = localStorage.getItem('user')
 
 function createPostModal (){
     const body = document.querySelector('body')
@@ -74,7 +75,7 @@ function closeModalCreatePost(){
     })
 }
 
-function modalExcludes(){
+function modalExcludes(token,id){
     const body = document.querySelector('body')
     const section = document.createElement('section')
     section.classList = ('modal-wrapper')
@@ -99,6 +100,10 @@ function modalExcludes(){
     h3.innerText = 'Confirmação de exclusão'
     buttonExitModal.innerText = 'X'
     buttonExitModal.classList = 'btn-exit-modal'
+    buttonExitModal.addEventListener('click', (e) => {
+        e.preventDefault()
+        section.remove()
+    })
 
     divDescription.classList = 'description-delete'
     h2.innerText = 'Tem certeza que deseja excluir este post?'
@@ -108,9 +113,20 @@ function modalExcludes(){
     buttonCancel.classList = 'btn-cancel-delete'
     buttonCancel.id = 'cancel-delete'
     buttonCancel.innerText = 'Cancelar'
+    buttonCancel.addEventListener('click',(e)=> {
+        e.preventDefault()
+        section.remove()
+    })
+
     buttonDelete.classList =  'btn-delete-post'
     buttonDelete.id = 'button-delete-post'
     buttonDelete.innerText = 'Sim,excluir este post'
+    buttonDelete.addEventListener('click',async (e) => {
+        e.preventDefault()
+        await deletePost(token,id)
+        renderAllPosts()
+        section.remove()
+    })
 
     divButtonExit.append(h3,buttonExitModal)
     divDescription.append(h2,p)
@@ -121,7 +137,7 @@ function modalExcludes(){
     body.append(section)
 }
 
-function modalAcessPost(){
+function modalAcessPost(object){
     const body = document.querySelector('body')
     const section = document.createElement('section')
     section.classList = ('modal-wrapper')
@@ -150,7 +166,8 @@ function modalAcessPost(){
     divButtonExit.classList = 'exit-modal'
     buttonExit.classList = 'btn-exit-modal'
 
-    spanName.innerText = 'doido'
+    img.src = object.user.avatar
+    spanName.innerText = object.user.username
     spanData.innerText = '| Outubro 2022'
 
     buttonExit.innerText = 'X'
@@ -158,8 +175,8 @@ function modalAcessPost(){
         section.remove()
     })
 
-    // h2.innerText = objeto.title
-    // p.innerText = objeto.content
+    h2.innerText = object.title
+    p.innerText = object.content
 
     divProfileDatas.append(img,spanName,spanData)
     divButtonExit.append(buttonExit)
@@ -170,79 +187,90 @@ function modalAcessPost(){
     section.append(divModal)
     body.append(section)
 }
-export{createPostModal,closeModalCreatePost,modalExcludes,modalAcessPost}
+
+function modalEditPost (object) {
+    const body = document.querySelector('body')
+    const section = document.createElement('section')
+    section.classList = ('modal-wrapper')
+
+    const divModal = document.createElement('div')
+    divModal.classList = 'div-modal-create-post'
+
+    const divTitle = document.createElement('div')
+    divTitle.classList = 'div-btn-profile-exit'
+    const h3 = document.createElement('h3')
+    h3.innerText = 'Edição'
+    const buttonExit = document.createElement('button')
+    buttonExit.classList = 'btn-exit-modal'
+    buttonExit.innerText = 'X'
+    buttonExit.addEventListener('click', () => {
+        section.remove()
+    })
+
+    const formEdit = document.createElement('form')
+    formEdit.id = 'form-publi-post'
 
 
-// <!-- <section class="modal-wrapper" id="modal-open-post">
-// <div class="div-modal">
-//     <div class="div-btn-profile-exit">
-//         <div class="profile-datas">
-//             <img class="img-post" src="/assets/img/Ellipse 1.svg" alt="">
-//             <span class="name-profile">Samuel Leão</span>
-//             <span class="date-profile">| Outubro 2022</span>
-//         </div>
+    const divTitlePost = document.createElement('div')
+    divTitlePost.classList = 'div-title-post'
+    const labelInput = document.createElement('label')
+    labelInput.innerText = 'Título do post'
+    const input = document.createElement('input')
+    input.type = 'text'
+    input.name = 'titulo'
+    input.id = 'titulo-post'
+    input.placeholder = 'Digite o título aqui...'
+    input.value = object.title
 
-//         <div class="exit-modal">
-//             <button class="btn-exit-modal" id="btn-exit-modal-post">X</button>
-//         </div>
-//     </div>
+    const divText = document.createElement('div')
+    divText.classList = 'div-text-post'
+    const labelTextArea = document.createElement('label')
 
-//     <h2>Outubro Rosa: Detalhes sobre a importância da prevenção do câncer de mama em cadelas e gatas</h2>
-//     <p>Assim como em humanos, cadelas e gatas também podem desenvolver câncer de mama. Ainda hoje, para ambas as espécies, o câncer de mama tem maior incidência. Mesmo com a evolução da medicina veterinária e da oncologia, o câncer de mama muitas vezes não tem cura, sendo o tratamento paliativo uma alternativa para dar conforto às fêmeas. 
+    labelTextArea.innerText = 'Conteúdo do post'
+    const textArea = document.createElement('textArea')
+    textArea.name = 'texto-digitado'
+    textArea.id = 'text-from-user'
+    textArea.value = object.content
 
-//         Por isso, a conscientização sobre o tema é uma das ações de prevenção de maior importância, principalmente para a campanha do outubro rosa. Então como podemos ajudar a prevenir o câncer de mama em cadelas e gatas?
-        
-//         Assim como outros tipos de câncer, o câncer de mama pode ter inúmeras causas. Entre  as mais comuns, temos fatores genéticos, como predisposição de algumas raças, exposição à poluição, tabagismo passivo, obesidade, além do fato de os pets estarem vivendo mais, o que também pode causar maior chances de tumores. No caso do câncer de mama, a influência hormonal é um dos fatores de maior contribuição para o aparecimento dessa doença.
-//     </p>
-// <div>                           
-// </section> -->
+    const divButtons = document.createElement('div')
+    divButtons.classList = 'buttons-publi-post'
+    const buttonCancel = document.createElement('button')
+    buttonCancel.classList = 'btn-cancel-delete'
+    buttonCancel.innerText = 'Cancelar'
+    buttonCancel.addEventListener('click', () => {
+        section.remove()
+    })
 
-{/* <div class="div-modal-create-post">
-    <div class="div-btn-profile-exit">
-        <h3>Criando novo post</h3>
-        <button class="btn-exit-modal">X</button>
-    </div>
+    const buttonSave = document.createElement('button')
+    buttonSave.classList = 'btn-publi-posts-modal'
+    buttonSave.id = 'btn-save-newpost'
+    buttonSave.type = 'submit'
+    buttonSave.innerText = 'Salvar alterações'
 
-    <form id="form-publi-post">
-        <div class="div-title-post">
-            <label for="titulo-do-post">Título do post</label>
-            <input type="text" name="titulo" id="titulo-post" required placeholder="Digite o título aqui...">
-        </div>
+    formEdit.addEventListener('submit', async (e) => {
+        e.preventDefault()
 
-        <div class="div-text-post">
-            <label for="texto-digitado">Conteúdo do post</label>
-            <textarea name="texto-digitado" id="text-from-user" cols="30" rows="10"></textarea>
-        </div>
+        const body = {
+            title: input.value,
+            content: textArea.value,
+        }
+        console.log(body)
+        await updatePost(body,token,object.id)
+        renderAllPosts()
+        section.remove()
+    })
 
-        <div class="buttons-publi-post">
-            <button class="btn-cancel-delete">Cancelar</button>
-            <button class="btn-publi-posts-modal" id="publi-post" type="submit">Publicar</button>
-        </div>
-    </form>
-</div> */}
+    divTitle.append(h3,buttonExit)
+    divTitlePost.append(labelInput,input)
+    divText.append(labelTextArea,textArea)
+    divButtons.append(buttonCancel,buttonSave)
+    formEdit.append(divTitlePost,divText,divButtons)
 
-{/* <section class="modal-wrapper">
-    <div class="div-modal-create-post">
-        <div class="div-btn-profile-exit">
-            <h3>Edição</h3>
-            <button class="btn-exit-modal">X</button>
-        </div>
+    divModal.append(divTitle,formEdit)
+    section.append(divModal)
+    body.appendChild(section)
 
-        <form id="form-publi-post">
-            <div class="div-title-post">
-                <label for="titulo-do-post">Título do post</label>
-                <input type="text" name="titulo" id="titulo-post" required placeholder="Digite o título aqui...">
-            </div>
+    return body
+}
 
-            <div class="div-text-post">
-                <label for="texto-digitado">Conteúdo do post</label>
-                <textarea name="texto-digitado" id="text-from-user" cols="30" rows="10"></textarea>
-            </div>
-
-            <div class="buttons-publi-post">
-                <button class="btn-cancel-delete">Cancelar</button>
-                <button class="btn-publi-posts-modal" id="btn-save-newpost" type="submit">Salvar Alterações</button>
-            </div>
-        </form>
-    </div>
-</section> */}
+export{createPostModal,closeModalCreatePost,modalExcludes,modalAcessPost,modalEditPost}
