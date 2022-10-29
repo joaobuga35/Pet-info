@@ -2,6 +2,7 @@ import { createPostModal,closeModalCreatePost,modalExcludes,modalAcessPost,modal
 import {findPost,createPost,findUser, deletePost} from "./requestHome.js"
 const token = localStorage.getItem('user')
 
+
 function openModalCreationPost (){
     const btnOpenModalAboutCreatePost = document.querySelector('#modal-create-post')
 
@@ -15,6 +16,7 @@ openModalCreationPost()
 
 async function renderAllPosts () {
     const callPost = await findPost(token)
+    console.log(callPost)
     const ul = document.querySelector('#user-posts')
     ul.innerHTML = ""
     renderLi(callPost)
@@ -24,6 +26,7 @@ renderAllPosts()
 async function headerProfile(){
 
     const callProfile = await findUser(token)
+    console.log(callProfile)
     renderProfile(callProfile)
 }
 headerProfile()
@@ -33,7 +36,8 @@ function renderProfile (user) {
 
     const img = document.createElement('img')
 
-    img.classList = 'img-profile'
+    img.id = user.id
+    img.classList = 'img-profile jojo'
     img.src = user.avatar
     img.alt = 'Foto do usuário'
 
@@ -41,9 +45,12 @@ function renderProfile (user) {
     return divHeader
 }
 
-function renderLi(arr) {
+ async function renderLi(arr) {
+    const callProfile = await findUser(token)
+    const imgProfile = document.querySelector('.img-profile')
+    console.log(imgProfile)
     const ul = document.querySelector('#user-posts')
-     ul.innerHTML = ""
+    ul.innerHTML = ""
     arr.forEach((elem) => {
         const li = document.createElement('li')
         li.id = elem.id
@@ -75,9 +82,14 @@ function renderLi(arr) {
         divContentPost.classList = "content-post"
 
         imgProfilePost.src = elem.user.avatar
+        imgProfilePost.id = elem.user.id
         spanName.innerText = elem.user.username
         spanData.innerText = '| Outubro 2022'
 
+        if (imgProfile.id != imgProfilePost.id) {
+            buttonEdit.classList.add('hidden-buttons')
+            buttonDelete.classList.add('hidden-buttons')
+        }
         buttonEdit.innerText = 'Editar'
         buttonEdit.id = 'edit-post'
         buttonEdit.addEventListener('click', async (e) => {

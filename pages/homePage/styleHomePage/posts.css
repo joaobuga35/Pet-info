@@ -55,3 +55,7 @@
     color: var(--gray300);
     font-size: var(--font-text-1);
 }
+
+.hidden-buttons {
+    display: none;
+}
